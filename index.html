@@ -6,6 +6,11 @@
   <meta charset="utf-8" />
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <style>
+    body {
+      background-image: url("https://cdn.ndtv.com/tech/images/gadgets/google-map-india-agartala-635.png?output-quality=80");
+      background-color: #cccccc;
+      
+    }
     svg{
       position: relative;
     }
@@ -25,6 +30,7 @@
   </style>
 </head>
 <body>
+  
   <div id='lineTest'></div>
   
   <script>
@@ -54,7 +60,7 @@ var svgContainer = d3.select("#lineTest").append("svg")
 var lineGraph = svgContainer.append("path")
                             .attr("d", lineFunction(lineData))
                             .attr("stroke", "blue")
-                            .attr("stroke-width", 2)
+                            .attr("stroke-width", 3)
                             .attr("stroke-opacity",0.1)
                             .attr("fill", "none");
                             
@@ -62,8 +68,8 @@ var circle1 = svgContainer.append("circle")
                             .attr("cx", 100)
                             .attr("cy", 50)
                             .attr("r", 10)
-                            .attr("fill", "orange")
-                            .attr("fill-opacity", 0.6)
+                            .attr("fill", "red")
+                            .attr("fill-opacity", 0.8)
                             .attr("stroke", "none")
                             .on("mouseover",handlerMouseOver)
                             .on("mouseout",handlerMouseOut);
@@ -72,8 +78,8 @@ var circle2 = svgContainer.append("circle")
                             .attr("cx", 300)
                             .attr("cy", 60)
                             .attr("r", 10)
-                            .attr("fill", "orange")
-                            .attr("fill-opacity", 0.6)
+                            .attr("fill", "red")
+                            .attr("fill-opacity", 0.8)
                             .attr("stroke", "none")
                             .on("mouseover",handlerMouseOver)
                             .on("mouseout",handlerMouseOut);
@@ -84,8 +90,9 @@ var pointdata =  [
 
 var text = svgContainer.selectAll("text").data(pointdata).enter()
                             .append("text")
-                            .attr("fill", "blue")
-                            .attr("fill-opacity", 0.6)
+                            .attr("fill", "black")
+                            .attr("fill-opacity", 0.8)
+                            .attr("font-size",18)
                             .attr("x",function(d){return d.x;})
                             .attr("y",function(d){return d.y})
                             .attr("dx", 10)
@@ -97,7 +104,7 @@ function handlerMouseOver(){
     .attr("stroke-opacity",0.9);
       tooltip.transition()
     .duration(100)
-    .style("opacity", 0.9);
+    .style("opacity", 0.7);
   tooltip.html('this is the path and the path description')
     .style("left", (d3.event.pageX + 5) + "px")
     .style("top", (d3.event.pageY - 28) + "px");
